@@ -1,24 +1,35 @@
 class Queue:
-    def __init__(self):
-        self.stack1 = []  # for enqueue
-        self.stack2 = []  # for dequeue
+
+    def __init__(self) -> None:
+        print("constructor called")
+        self.stack1 = []
+        self.stack2 = []
 
     def enqueue(self, val):
-        # TODO: Implement
-        pass
+        self.stack1.append(val)
 
     def dequeue(self):
-        # TODO: Implement
-        pass
+        if not self.is_empty():
+            raise IndexError("Trying to dequeue an empty queue")
+        
+        while self.stack1:
+            self.stack2.append(self.stack1.pop())
+
+        return self.stack2.pop()
 
     def peek(self):
-        # TODO: Implement
-        pass
+        if self.is_empty():
+            raise ValueError("Empty Queue")
+        else:
+            return self.stack1[0]
 
     def is_empty(self):
-        # TODO: Implement
-        pass
+        if len(self.stack1) == 0 and len(self.stack2) == 0:
+            return True
 
     def get_size(self):
         # TODO: Implement
         pass
+
+
+
