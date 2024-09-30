@@ -47,11 +47,19 @@ class Doubly_Linked_List_Seq:
         self.tail = x
 
     def delete_first(self):
-        # TODO: Part 8.4.1
+        y = self.head
+        x = y.prev
+        x.next = None
+        self.head = x
+        del y
         return x
 
     def delete_last(self):
-        # TODO: Part 8.4.1
+        y = self.tail
+        x = y.next
+        x.prev = None
+        self.tail = x
+        del y
         return x
 
     def remove(self, x1, x2):
