@@ -39,7 +39,6 @@ class Doubly_Linked_List_Seq:
         return self.head == None and self.tail == None
 
     def insert_first(self, x):
-        
         node = Doubly_Linked_List_Node(x)
         if self.head is not None:
             self.head.prev = node
@@ -47,12 +46,14 @@ class Doubly_Linked_List_Seq:
         self.head = node
 
     def insert_last(self, x):
-
         node = Doubly_Linked_List_Node(x)
 
+        if self.head is None:
+            self.head = node
+
         if self.tail is not None:
-            self.tail.next = node
             node.prev = self.tail
+            self.tail.next = node
         self.tail = node
 
     def delete_first(self):
