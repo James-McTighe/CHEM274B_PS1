@@ -56,17 +56,18 @@ class Doubly_Linked_List_Seq:
         self.tail = node
 
     def delete_first(self):
+
         y = self.head
-        x = y.prev
-        x.next = None
+        x = y.next
+        x.prev = None
         self.head = x
         del y
         return x
 
     def delete_last(self):
         y = self.tail
-        x = y.next
-        x.prev = None
+        x = y.prev
+        x.next = None
         self.tail = x
         del y
         return x
@@ -86,13 +87,11 @@ class Doubly_Linked_List_Seq:
         return L2
 
     def splice(self, x, L2):
-        node = Doubly_Linked_List_Node(x)
-
-        y = node.next
-        node.next = L2.tail
+        
+        y = x.next
+        x.next = L2.tail
         y.prev = L2.head
 
         # L2.head = None
         # L2.tail = None
        
-
