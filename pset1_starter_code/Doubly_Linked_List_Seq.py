@@ -36,12 +36,15 @@ class Doubly_Linked_List_Seq:
         node.item = x
 
     def insert_first(self, x):
-        # TODO: Part 8.4.1
-        pass
+        self.head.next = x
+        x.prev = self.head
+        self.head = x
+
 
     def insert_last(self, x):
-        # TODO: Part 8.4.1
-        pass
+        self.tail.prev = x
+        x.next = self.tail
+        self.tail = x
 
     def delete_first(self):
         # TODO: Part 8.4.1
