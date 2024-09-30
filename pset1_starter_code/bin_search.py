@@ -3,7 +3,7 @@ import math
 class Solution:
     def binary_search(self, arr, target):
         low = 0
-        high = len(arr)
+        high = len(arr) - 1
 
         while low <= high:
 
