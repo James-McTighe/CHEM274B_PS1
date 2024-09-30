@@ -2,33 +2,31 @@ import math
 
 class Solution:
     def binary_search(self, arr, target):
-        low = arr[0]
-        high = arr[-1]
+        low = 0
+        high = len(arr)
 
-        print(low)
-        print(high)
+        while low <= high:
 
-        # while low <= high:
+            mid = low + (high - low) // 2
+            # print(mid)
 
-        #     mid = low + high // 2
-        #     print(mid)
-
-        #     if arr[mid] == target:
-        #         return mid
+            if arr[mid] == target:
+                return f"target is located at the {mid} index"
             
-        #     elif arr[mid] < target:
-        #         low = mid + 1
+            elif arr[mid] < target:
+                low = mid + 1
+                print(f"low = {low}")
 
-        #     else:
-        #         high = mid - 1
+            else:
+                high = mid - 1
+                print(f"high = {high}")
 
         return f"Element {target} not present within list"
 
 
 a = Solution()
 
-b = [x for x in range(101)]
+b = [x for x in range(1010)]
 
-print(b[45])
 
-a.binary_search(b,45)
+print(a.binary_search(b,450))
