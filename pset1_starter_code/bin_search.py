@@ -1,5 +1,3 @@
-import math
-
 class Solution:
     def binary_search(self, arr, target):
         low = 0
