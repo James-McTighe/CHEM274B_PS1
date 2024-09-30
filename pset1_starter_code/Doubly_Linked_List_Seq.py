@@ -39,33 +39,21 @@ class Doubly_Linked_List_Seq:
         return self.head == None and self.tail == None
 
     def insert_first(self, x):
-        # TODO: fix this method
+        
         node = Doubly_Linked_List_Node(x)
-        if self.is_empty():
-            self.head = node
-            self.tail = node
-            node.prev = None
-            node.next = None
-        else:
-            self.head.next = node
-            node.prev = self.head
-            self.head = node
-
+        if self.head is not None:
+            self.head.prev = node
+            node.next = self.head
+        self.head = node
 
     def insert_last(self, x):
 
         node = Doubly_Linked_List_Node(x)
 
-        if self.is_empty():
-            self.tail = node
-            self.head = node
-            node.prev = None
-            node.next = None
-        else:    
-            y = self.tail
-            y.prev = node
-            node.next = self.tail
-            self.tail = node
+        if self.tail is not None:
+            self.tail.next = node
+            node.prev = self.tail
+        self.tail = node
 
     def delete_first(self):
         y = self.head
