@@ -35,16 +35,37 @@ class Doubly_Linked_List_Seq:
         node = self.head.later_node(i)
         node.item = x
 
+    def is_empty(self):
+        return self.head == None and self.tail == None
+
     def insert_first(self, x):
-        self.head.next = x
-        x.prev = self.head
-        self.head = x
+        # TODO: fix this method
+        node = Doubly_Linked_List_Node(x)
+        if self.is_empty():
+            self.head = node
+            self.tail = node
+            node.prev = None
+            node.next = None
+        else:
+            self.head.next = node
+            node.prev = self.head
+            self.head = node
 
 
     def insert_last(self, x):
-        self.tail.prev = x
-        x.next = self.tail
-        self.tail = x
+
+        node = Doubly_Linked_List_Node(x)
+
+        if self.is_empty():
+            self.tail = node
+            self.head = node
+            node.prev = None
+            node.next = None
+        else:    
+            y = self.tail
+            y.prev = node
+            node.next = self.tail
+            self.tail = node
 
     def delete_first(self):
         y = self.head
@@ -64,21 +85,26 @@ class Doubly_Linked_List_Seq:
 
     def remove(self, x1, x2):
         L2 = Doubly_Linked_List_Seq()
-        L2.head = x1
-        L2.tail = x2
+        node1 = Doubly_Linked_List_Node(x1)
+        node2 = Doubly_Linked_List_Node(x2)
 
-        y1 = x1.prev
-        y2 = x2.next
+        L2.head = node1
+        L2.tail = node2
+
+        y1 = node1.prev
+        y2 = node2.next
         y1.next = y2
         y2.prev = y1
         return L2
 
     def splice(self, x, L2):
-        y = x.next
-        x.next = L2.tail
+        node = Doubly_Linked_List_Node(x)
+
+        y = node.next
+        node.next = L2.tail
         y.prev = L2.head
 
-        L2.head = None
-        L2.tail = None
+        # L2.head = None
+        # L2.tail = None
        
-       
+
