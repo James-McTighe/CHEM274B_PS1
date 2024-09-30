@@ -64,9 +64,21 @@ class Doubly_Linked_List_Seq:
 
     def remove(self, x1, x2):
         L2 = Doubly_Linked_List_Seq()
-        # TODO: Part 8.4.2
+        L2.head = x1
+        L2.tail = x2
+
+        y1 = x1.prev
+        y2 = x2.next
+        y1.next = y2
+        y2.prev = y1
         return L2
 
     def splice(self, x, L2):
-        # TODO: Part 8.4.3
-        pass
+        y = x.next
+        x.next = L2.tail
+        y.prev = L2.head
+
+        L2.head = None
+        L2.tail = None
+       
+       
