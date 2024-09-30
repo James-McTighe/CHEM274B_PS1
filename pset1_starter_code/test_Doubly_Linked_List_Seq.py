@@ -69,6 +69,9 @@ def check(test):
     student_sol = run_test(ops)
     n1 = len(staff_sol)
     n2 = len(student_sol)
+    print(f"Staff Solution: {staff_sol}")
+    print(f"Student Solution: {student_sol}")
+
     if n1 != n2: return False
     for i in range(n1):
         if staff_sol[i] != student_sol[i]: return False
