@@ -4,8 +4,10 @@ class HashTable:
         self.table = [[] for _ in range(self.size)]
 
     def _hash(self, key):
-        # TODO: Implement for 12.1
-        pass
+        converted_list = [ord(str(x)) for x in key]
+        sum_total = sum(converted_list)
+
+        return (sum_total * 31) % self.size
 
     def insert(self, key, value):
         # TODO: Implement for 12.2
@@ -17,6 +19,10 @@ class HashTable:
 
     def remove(self, key):
         # TODO: Implement for 12.2
+        pass
+
+    def load_factor(self):
+        # TODO Implement for 12.3
         pass
             
 class DynamicHashTable(HashTable):
@@ -40,3 +46,4 @@ class DynamicHashTable(HashTable):
     def resize(self):
         # TODO: Implement for 12.3
         pass
+
