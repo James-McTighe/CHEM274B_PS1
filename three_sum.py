@@ -1,22 +1,47 @@
+from operator import itemgetter
+
 class Solution:
     def three_sum(self, nums):
 
-        sum_set = {}
+        sum_list = []
+        sum_set = []
 
-        for i in range(len(nums)):
-            for j in range(i, len(nums)):
-                for k in range(j, len(nums)):
-                    if (i + j + k) == 0 and self.not_equal(i,j,k):
-                        new_entry = [i,j,k]
-                        new_entry.sort()
-                        sum_set.update(new_entry)
+        n = len(nums)
+        nums.sort()
 
-        return sum_set
+        # iterates over elements, determines if valid, then adds to running list, quadratic
+        for i in range(n -2):
 
-    def get_trips(self,nums):
-        pass
+            j = i + 1
+            k = n - 1
 
-    def not_equal(self, i, j, k):
+            while j < k:
+                proposed_entry = [nums[i],nums[j],nums[k]]
+                if self.valid_entry(proposed_entry):
+                    proposed_entry.sort()
+                    sum_list.append(proposed_entry)
+                    j += 1
+                    k -= 1
+                elif sum(proposed_entry) < 0:
+                    j += 1
+                else:
+                    k -= 1
+
+        #remove duplicate entries and return list, quadratic
+        res = [i for n, i in enumerate(sum_list) if i not in sum_list[:n]]
+        return res
+
+    def valid_entry(self,nums): # determines if this matches the return criteria
+        if self.not_equal(nums) and sum(nums) == 0:
+            return True
+        else:
+            return False
+
+    def not_equal(self, input_list): # determines if all elements are not equal to eachother
+        i = input_list[0]
+        j = input_list[1]
+        k = input_list[2]
+
         if i != j and i != k and j !=k:
             return True
         else:
@@ -34,13 +59,10 @@ TODO
     c. sort by [0] then [1] then [2]
 """
 
-# opening test data
-file = open("threesum_test_data.txt", "r")
-
-lines = [int(x) for x in file.readlines()]
-
 test = Solution()
 
-a = [-5,2,3]
+a = [0,1,-1,2,-2,2,-2]
 
-print(test.three_sum(a))
+
+y = test.three_sum(a)
+print(y)
