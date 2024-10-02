@@ -49,14 +49,7 @@ class Solution:
 
 """
 TODO
-1. create a function to get sum values
-    a. sort i <= j <= k
-    b. those functions will get passed into a set
-    c. return set
-2. create a function to sort values
-    a. call first function
-    b. convert set to list
-    c. sort by [0] then [1] then [2]
+sort the list of lists by the indicies
 """
 
 test = Solution()
