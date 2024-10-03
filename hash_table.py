@@ -11,7 +11,7 @@ class HashTable:
 
     def insert(self, key, value):
         destination = self._hash(key)
-        
+
         # destination.append(value)
         destination.insert(0,value)
         ## TODO: implement collision resolution
@@ -53,23 +53,8 @@ class DynamicHashTable(HashTable):
     def resize(self):
         self.size *= 2
         new_table = [[] for _ in range(self.size)]
-        for x in self.table:
+        # for x in self.table:
 
 
 
 # Testing
-a = HashTable(10)
-print(a.load_factor())
-print(a.table)
-b = []
-
-a.insert(0,10)
-a.insert(0,20)
-a.insert(4,5)
-print(a.table)
-
-print(a.table)
-print(a.load_factor())
-
-
-
