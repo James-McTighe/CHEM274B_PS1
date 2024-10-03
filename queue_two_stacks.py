@@ -1,3 +1,8 @@
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
 class Queue:
 
     def __init__(self) -> None:
@@ -9,8 +14,8 @@ class Queue:
 
     def dequeue(self):
         if not self.is_empty():
-            # raise IndexError("Trying to dequeue an empty queue")
-            return 1
+            raise IndexError
+            # return 1
         
         while self.stack1:
             self.stack2.append(self.stack1.pop())
