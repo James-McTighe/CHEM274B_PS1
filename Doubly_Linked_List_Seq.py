@@ -85,13 +85,15 @@ class Doubly_Linked_List_Seq:
         y2 = Doubly_Linked_List_Node(node2.next)
         y1.next = y2
         y2.prev = y1
-        return L2
+        # return L2
 
     def splice(self, x, L2):
-        
-        y = x.next
-        x.next = L2.tail
-        y.prev = L2.head
+        insertion_node = Doubly_Linked_List_Node(x)
+        spliced_sequence = Doubly_Linked_List_Seq()
+        y = Doubly_Linked_List_Node(None)
+        y = insertion_node.next
+        insertion_node.next = spliced_sequence.tail
+        y.prev = spliced_sequence.head
 
         # L2.head = None
         # L2.tail = None
