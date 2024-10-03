@@ -10,7 +10,8 @@ class HashTable:
         return (sum_total * 31) % self.size
 
     def insert(self, key, value):
-        destination = self.table[key]
+        destination = self._hash(key)
+        
         # destination.append(value)
         destination.insert(0,value)
         ## TODO: implement collision resolution
@@ -31,15 +32,15 @@ class DynamicHashTable(HashTable):
         self.load_factor_threshold = 0.7
 
     def calculate_load_factor(self):
-        count = 0
         for _ in self.table:
             if not _:
                 continue
             else:
                 for x in _ :
                     count += 1
-
-        return count
+        if self.count > self.size:
+            self.resize()
+        return self.count
 
     def insert(self, key, value):
         # TODO: Implement for 12.3
@@ -50,8 +51,10 @@ class DynamicHashTable(HashTable):
         pass
 
     def resize(self):
-        # TODO: Implement for 12.3
-        pass
+        self.size *= 2
+        new_table = [[] for _ in range(self.size)]
+        for x in self.table:
+
 
 
 # Testing
