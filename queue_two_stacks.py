@@ -10,6 +10,7 @@ class Queue:
         self.stack2 = []
 
     def enqueue(self, val):
+        node = ListNode(val)
         self.stack1.append(val)
 
     def dequeue(self):
