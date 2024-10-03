@@ -1,7 +1,6 @@
 class Queue:
 
     def __init__(self) -> None:
-        print("constructor called")
         self.stack1 = []
         self.stack2 = []
 
