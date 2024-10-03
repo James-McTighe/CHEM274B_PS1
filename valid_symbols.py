@@ -13,7 +13,7 @@ class Solution:
                 if bracket_pairs[first_element] != char:
                     return False
                 
-            else:
+            elif char in bracket_pairs:
                 stack.append(char)
 
             print(f"Current Stack: {stack}")
@@ -24,5 +24,5 @@ class Solution:
 if __name__ == '__main__':
     a = Solution
 
-    print(a.valid_symbols(a,'(([]]))'))
+    print(a.valid_symbols(a,'(([]))'))
     
