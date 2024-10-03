@@ -10,7 +10,7 @@ class Queue:
     def dequeue(self):
         if not self.is_empty():
             # raise IndexError("Trying to dequeue an empty queue")
-            return False
+            return 1
         
         while self.stack1:
             self.stack2.append(self.stack1.pop())
@@ -20,7 +20,7 @@ class Queue:
     def peek(self):
         if self.is_empty():
             # raise ValueError("Empty Queue")
-            return False
+            return 1
         else:
             return self.stack1[0]
 
