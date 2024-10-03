@@ -14,7 +14,7 @@ class Queue:
         self.stack1.append(val)
 
     def dequeue(self):
-        if not self.is_empty():
+        if self.is_empty():
             raise IndexError
             # return 1
         
@@ -25,8 +25,7 @@ class Queue:
 
     def peek(self):
         if self.is_empty():
-            # raise ValueError("Empty Queue")
-            return 1
+            raise IndexError
         else:
             return self.stack1[0]
 
