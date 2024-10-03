@@ -8,7 +8,7 @@ class Solution:
 
             if char in bracket_pairs.values():
                 if not stack:
-                    raise ValueError("Empty Queue")
+                    return False
                 first_element = stack.pop()
 
                 if bracket_pairs[first_element] != char:
@@ -26,4 +26,7 @@ if __name__ == '__main__':
     a = Solution
 
     print(a.valid_symbols(a,'(([]))'))
+    b = []
+    if b:
+        print("Hello")
     
