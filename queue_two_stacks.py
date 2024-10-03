@@ -35,8 +35,7 @@ class Queue:
             return True
 
     def get_size(self):
-        # TODO: Implement
-        pass
+        return len(self.stack1) + len(self.stack2)
 
 
 
