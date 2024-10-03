@@ -7,7 +7,8 @@ class Solution:
         for char in s:
 
             if char in bracket_pairs.values():
-
+                if not stack:
+                    raise ValueError("Empty Queue")
                 first_element = stack.pop()
 
                 if bracket_pairs[first_element] != char:
