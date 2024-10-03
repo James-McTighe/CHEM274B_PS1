@@ -81,8 +81,8 @@ class Doubly_Linked_List_Seq:
         L2.head = node1
         L2.tail = node2
 
-        y1 = node1.prev
-        y2 = node2.next
+        y1 = Doubly_Linked_List_Node(node1.prev)
+        y2 = Doubly_Linked_List_Node(node2.next)
         y1.next = y2
         y2.prev = y1
         return L2
