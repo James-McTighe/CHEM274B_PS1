@@ -90,8 +90,7 @@ class Doubly_Linked_List_Seq:
     def splice(self, x, L2):
         insertion_node = Doubly_Linked_List_Node(x)
         spliced_sequence = Doubly_Linked_List_Seq()
-        y = Doubly_Linked_List_Node(None)
-        y = insertion_node.next
+        y = Doubly_Linked_List_Node(insertion_node.next)
         insertion_node.next = spliced_sequence.tail
         y.prev = spliced_sequence.head
 

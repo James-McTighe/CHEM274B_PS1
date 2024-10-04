@@ -11,19 +11,15 @@ class HashTable:
 
     def insert(self, key, value):
         destination = self._hash(key)
-
-        # destination.append(value)
-        destination.insert(0,value)
-        ## TODO: implement collision resolution
-
+        self.table[destination].append(value)
+        
     def get(self, key):
         return self.table[key]
-    ## TODO: implement collision resolution
+    
 
     def remove(self, key):
         self.table.remove(self._hash(key))
-        ## TODO: implement collision resolution      
-
+        
             
 class DynamicHashTable(HashTable):
     def __init__(self, size):
@@ -38,22 +34,26 @@ class DynamicHashTable(HashTable):
             else:
                 for x in _ :
                     count += 1
-        if self.count > self.size:
+        if self.count > (self.size * self.load_factor_threshold):
             self.resize()
         return self.count
 
     def insert(self, key, value):
-        # TODO: Implement for 12.3
-        pass
+        destination = self._hash(key)
+        self.table[destination].append(value)
+
+        self.calculate_load_factor()
 
     def remove(self, key):
-        # TODO: Implement for 12.3
-        pass
+        self.table.remove(self._hash(key))
+
 
     def resize(self):
         self.size *= 2
         new_table = [[] for _ in range(self.size)]
-        # for x in self.table:
+        for i in self.table:
+           for key, value in i:
+               self.insert(key, value)
 
 
 
