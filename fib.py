@@ -8,14 +8,9 @@ class Solution:
                 return 1
             return recursion_method(x-1) + recursion_method(x-2)
         
-       for x in range(n):
-            print(recursion_method(x))
-        
-               
-           
+    #    for x in range(n):
+    #         print(recursion_method(x))
     
-
-
     def fib_iterative(self, n):
         a = 0
         b = 1
