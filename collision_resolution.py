@@ -6,6 +6,8 @@ class SeparateChainingHashTable:
     def __init__(self, size):
         self.size = size
         self.table = [[] for _ in range(self.size)]
+        self.count = 0
+        self.load_factor_threshold = 0.7
 
     def _hash(self, key):
         converted_list = [ord(str(x)) for x in key]
@@ -14,12 +16,13 @@ class SeparateChainingHashTable:
         return (sum_total * 31) % self.size
 
     def calculate_load_factor(self):
+        self.count = 0
         for _ in self.table:
             if not _:
                 continue
             else:
                 for x in _ :
-                    count += 1
+                    self.count += 1
         if self.count > (self.size * self.load_factor_threshold):
             self.resize()
         return self.count
@@ -34,7 +37,13 @@ class SeparateChainingHashTable:
         self.table.remove(self._hash(key))
 
     def get(self, key):
-        return self.table[key]
+        index = self._hash(key)
+        query = self.table[index]
+
+        if query:
+            return self.table[index]
+        else:
+            return None
 
     def resize(self):
         self.size *= 2
@@ -46,24 +55,48 @@ class SeparateChainingHashTable:
 class LinearProbingHashTable:
     def __init__(self, size):
         self.size = size
+        self.count = 0
         self.keys = [None] * self.size
         self.values = [None] * self.size
 
     def _hash(self, key):
-        # TODO: Implement for 12.4
-        pass
+        converted_list = [ord(str(x)) for x in key]
+        sum_total = sum(converted_list)
+
+        return (sum_total * 31) % self.size
 
     def insert(self, key, value):
-        # TODO: Implement for 12.4
-        pass
+        index = self._hash(key)
+
+        while self.keys[index] is not None:
+            if self.keys[index] == key:
+                self.values[index] = value
+                return
+            index = self._hash(index + 1)
+
+        self.keys[index] = key
+        self.values[index] = value
 
     def get(self, key):
-        # TODO: Implement for 12.4
-        pass
+        index = self._hash(key)
+
+        while self.keys[index] is not None:
+            if self.keys[index] == key:
+                return self.values[index]
+            index = self._hash(index + 1)
+
+        return None
 
     def remove(self, key):
-        # TODO: Implement for 12.4
-        pass
+        index = self._hash(key)
+
+        while self.keys[index] is not None:
+            if self.keys[index] == key:
+                self.values[index] = None
+                return
+            index = self._hash(index + 1)
+
+        return None
 
 def generate_random_string(length):
     return ''.join(random.choices(string.ascii_lowercase, k=length))

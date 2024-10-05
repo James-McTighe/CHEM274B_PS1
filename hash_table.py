@@ -11,10 +11,16 @@ class HashTable:
 
     def insert(self, key, value):
         destination = self._hash(key)
-        self.table[destination].append(value)
+        self.table[destination].append({key:value})
         
     def get(self, key):
-        return self.table[key]
+        index = self._hash(key)
+        query = self.table[index]
+
+        if query:
+            return self.table[index]
+        else:
+            return None
     
 
     def remove(self, key):
@@ -33,14 +39,14 @@ class DynamicHashTable(HashTable):
                 continue
             else:
                 for x in _ :
-                    count += 1
+                    self.count += 1
         if self.count > (self.size * self.load_factor_threshold):
             self.resize()
         return self.count
 
     def insert(self, key, value):
         destination = self._hash(key)
-        self.table[destination].append(value)
+        self.table[destination].append({key:value})
 
         self.calculate_load_factor()
 
@@ -49,12 +55,12 @@ class DynamicHashTable(HashTable):
 
 
     def resize(self):
+        old_table = self.table
         self.size *= 2
         new_table = [[] for _ in range(self.size)]
-        for i in self.table:
-           for key, value in i:
-               self.insert(key, value)
-
+        for i in old_table:
+            for key,value in i:
+                self.insert(key,value)
 
 
 # Testing
